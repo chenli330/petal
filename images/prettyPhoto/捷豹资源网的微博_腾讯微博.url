@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://t.qq.com/jiebao138vip?pgv_ref=im.perinfo.perinfo.icon
+[DOC_QuickLoginFrame_login_div]
+BASEURL=https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=46000101&style=23&hide_border=1&border_radius=1&daid=6&target=top&ptredirect=5&lang=&low_login=1&hide_title_bar=1&hide_close_icon=1&self_regurl=http%3A//reg.t.qq.com/index.php&proxy_url=http://t.qq.com/proxy_t.html&s_url=http://t.qq.com/jiebao138vip?pgv_ref=im.perinfo.perinfo.icon
+ORIGURL=https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=46000101&style=23&hide_border=1&border_radius=1&daid=6&target=top&ptredirect=5&lang=&low_login=1&hide_title_bar=1&hide_close_icon=1&self_regurl=http%3A//reg.t.qq.com/index.php&proxy_url=http://t.qq.com/proxy_t.html&s_url=http://t.qq.com/jiebao138vip?pgv_ref=im.perinfo.perinfo.icon
+[InternetShortcut]
+URL=http://t.qq.com/jiebao138vip?pgv_ref=im.perinfo.perinfo.icon
+IDList=
+IconFile=http://t.qq.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
