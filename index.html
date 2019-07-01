@@ -202,27 +202,7 @@
                             <h2>记事</h2>
                             <div class="relative">
                                 <div class="scroll">
-                                    <img src="./powerview/幻灯片1.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片2.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片3.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片4.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片5.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片6.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片7.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片8.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片9.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片10.jpg" width="100%">
-                                    <br/>
-                                    <img src="./powerview/幻灯片11.jpg" width="100%">
+                                    <img id="jishi" name="1" src="./powerview/幻灯片1.jpg" width="100%" onclick="nextPage(4)">
                                     <br/>
                                 </div>
                             </div>
@@ -230,17 +210,17 @@
                     </li>
                     <li id="page_Talk">
                         <img src="images/bg_content.png" alt="" class="bg_cont">
-                        <span class="back"><img src="images/nav3.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
+                        <span class="back"><img  src="images/nav3.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
                         <div class="pad">
                             <h2 onclick="addWish()">点击添加心愿</h2>
                             <div class="relative">
                                 <div class="scroll">
-                                    <div style="width:100%;float: left; border-bottom: 1px solid #CCCCCC;">
-                                        你去了福建泉州旅游。<br/><span style="float: right"> --2015/4/4</span></div>
+<!--                                    <div style="width:100%;float: left; border-bottom: 1px solid #CCCCCC;">-->
+<!--                                        你去了福建泉州旅游。<br/><span style="float: right"> &#45;&#45;2015/4/4</span></div>-->
 
 
-                                    <div style="width:100%;float: left">等待更新<br/><span
-                                            style="float: right"> --2015/4/*</span></div>
+<!--                                    <div style="width:100%;float: left">等待更新<br/><span-->
+<!--                                            style="float: right"> &#45;&#45;2015/4/*</span></div>-->
                                 </div>
                             </div>
                         </div>
@@ -325,6 +305,15 @@
     })
     function addWish() {
         alert("111");
+    }
+    function nextPage(i) {
+        var i=$("#jishi").attr('name');
+        if (i>=11){
+            i=0;
+        }
+        i++;
+        $("#jishi").attr('src',"./powerview/幻灯片"+i+".jpg");
+        $("#jishi").attr('name',i);
     }
 </script>
 
