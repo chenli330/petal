@@ -20,6 +20,15 @@ $(document).ready(function () {
             $("#nextOpt").attr('name',i);
     });
 
+    $("#addWishClick").click(function () {
+        var value =$("#input").val();
+        if (value) {
+            createItem(value);
+            $("#input").val('');
+        }
+    });
+
+
 
 
 });

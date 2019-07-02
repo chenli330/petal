@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
     <link rel="shortcut icon" href="index/images/favicon.ico">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <!--
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/page.js"></script>
     <script type="text/javascript" src="js/content_switch.js"></script>
@@ -24,6 +27,8 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
     <script src="js/prettyPhoto.js"></script>
+
+
     <!--[if lt IE 9]>
     <script type="text/javascript" src="./js/html5.js"></script>
     <link rel="stylesheet" href="./css/ie.css" type="text/css" media="all">
@@ -138,14 +143,53 @@
         return false;
     }
 
+
     document.oncontextmenu = stop;
 
     function checkhtml5() {
-        if ($.browser.msie && parseInt($.browser.version, 10) < 9) {
+        if ($.support.leadingWhitespace && parseInt($.browser.version, 10) < 9) {
             document.body.innerHTML = "<div style=' clear: both; text-align:center; position: relative; height: 50px; margin-top: 30px; padding: 20px; background-color: red; color: white; font-size:20px;'>你的浏览器非常落后，不支持 HTML5!<br/>请使用 Chrome 14+/IE 9+/Firefox 7+/Safari 4+ 其中任意一款浏览器访问此页面。</a></div>";
-
         }
+        init();
     }
+
+    var container;
+
+    // 可选颜色
+    var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
+
+    //创建许愿页
+    var createItem = function (text) {
+        var color = colors[parseInt(Math.random() * 5, 10)]
+        $('<div class="item"><p>' + text + '</p></div>').css({'background': color}).appendTo(container);
+    };
+
+    // 初始化
+    var init = function () {
+
+        container = $('#container');
+
+
+        var tests = ['道友，还处在凝气期吗？'];
+        $.each(tests, function (i, v) {
+            createItem(v);
+        });
+
+        // 绑定输入框
+        $('#input').keydown(function (e) {
+            var $this = $(this);
+            if (e.keyCode == '13') {
+                var value = $this.val();
+                if (value) {
+                    createItem(value);
+                    $this.val('');
+                }
+            }
+        });
+
+
+
+    };
 </script>
 <body onLoad="checkhtml5()">
 <div id="abox">
@@ -202,10 +246,11 @@
                         <div class="pad">
                             <h2>记事</h2>
                             <div class="relative">
-                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页" name="1"></span>
+                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页"
+                                                            name="1"></span>
                                 <span class="nextOpt"><img src="images/next.png" id="nextOpt" alt="下一页" name="1"></span>
                                 <div class="scroll">
-                                    <img  id="jishi" src="./powerview/幻灯片1.jpg" width="100%">
+                                    <img id="jishi" src="./powerview/幻灯片1.jpg" width="100%">
                                     <br/>
                                 </div>
                             </div>
@@ -213,17 +258,15 @@
                     </li>
                     <li id="page_Talk">
                         <img src="images/bg_content.png" alt="" class="bg_cont">
-                        <span class="back"><img  src="images/nav3.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
+                        <span class="back"><img src="images/nav3.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
                         <div class="pad">
-                            <h2 onclick="addWish()">点击添加心愿</h2>
+                            <h2>心愿</h2>
+                            <span class="addWish"><img src="images/add.png" id="addWishClick" alt="添加心愿"></span>
+
                             <div class="relative">
                                 <div class="scroll">
-<!--                                    <div style="width:100%;float: left; border-bottom: 1px solid #CCCCCC;">-->
-<!--                                        你去了福建泉州旅游。<br/><span style="float: right"> &#45;&#45;2015/4/4</span></div>-->
-
-
-<!--                                    <div style="width:100%;float: left">等待更新<br/><span-->
-<!--                                            style="float: right"> &#45;&#45;2015/4/*</span></div>-->
+                                    <div id="container"></div>
+                                    <input id="input" type="text" placeholder="点击输入...回车或上方的加号发布"/>
                                 </div>
                             </div>
                         </div>
@@ -279,7 +322,7 @@
                         <span class="back"><img src="images/nav6.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
                         <div class="pad">
                             <h2>沙漏</h2>
-                            <div id="loveHeart" style="margin-top: 30px;font-size: 25px;">
+                            <div id="loveHeart" style="margin-top: 30px;font-size: 25px; width: auto;height: auto">
                                 <span style="">你知道我们认识多久了吗？</span>
                                 <div id="elapseClock" style="margin: 10px 0px 10px 0px;"></div>
                                 <img src="images/1.gif"/>　　　　<img src="images/2.gif"/><br/><br/>
@@ -300,17 +343,16 @@
     </div>
 
 </div>
+
 <script>
     $(window).load(function () {
         $('.page_spinner').fadeOut();
         $('body').css({overflow: 'visible'});
 
     })
-    function addWish() {
-        alert("111");
-    }
 
 </script>
+
 
 <script type="text/javascript">//修改时光沙漏时间
 var offsetX = $("#loveHeart").width() / 2;

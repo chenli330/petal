@@ -140,7 +140,7 @@ $(document).ready(function () {
         next: '.next'  // selector for element to use as event trigger for next slide
     });
 
-    if ($.browser.msie && $.browser.version == 8) {
+    if ($.support.leadingWhitespace && $.browser.version == 8) {
         var num = 0;
 
         $('.pagin a').each(function (num) {
