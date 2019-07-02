@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="index/images/favicon.ico">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
     <script type="text/javascript" src="js/content_switch.js"></script>
     <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
@@ -201,8 +202,10 @@
                         <div class="pad">
                             <h2>记事</h2>
                             <div class="relative">
+                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页" name="1"></span>
+                                <span class="nextOpt"><img src="images/next.png" id="nextOpt" alt="下一页" name="1"></span>
                                 <div class="scroll">
-                                    <img id="jishi" name="1" src="./powerview/幻灯片1.jpg" width="100%" onclick="nextPage(4)">
+                                    <img  id="jishi" src="./powerview/幻灯片1.jpg" width="100%">
                                     <br/>
                                 </div>
                             </div>
@@ -306,15 +309,7 @@
     function addWish() {
         alert("111");
     }
-    function nextPage(i) {
-        var i=$("#jishi").attr('name');
-        if (i>=11){
-            i=0;
-        }
-        i++;
-        $("#jishi").attr('src',"./powerview/幻灯片"+i+".jpg");
-        $("#jishi").attr('name',i);
-    }
+
 </script>
 
 <script type="text/javascript">//修改时光沙漏时间

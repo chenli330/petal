@@ -314,6 +314,25 @@ header {
     z-index: 6
 }
 
+.nextOpt{
+    position: absolute;
+    top: 30%;
+    left: 95%;
+    z-index: 6;
+}
+.nextOpt img{
+    width: 50px;
+}
+
+.frontOpt{
+    position: absolute;;
+    top: 30%;
+    left: -15%;
+    z-index: 6;
+}
+.frontOpt img{
+    width: 50px;
+}
 .back img {
     position: relative;
     top: 15px;
