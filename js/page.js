@@ -21,6 +21,9 @@ var init = function () {
         type: 'POST',
         url: "http://www.charleymot.com/server/petal/wishSize",
         cache: false,
+        data:{
+
+        },
         async: true,
         success: function (data) {
             if (data.code == 200) {
@@ -30,10 +33,10 @@ var init = function () {
             }
         },
         error: function (e) {
+            console.log(e);
             alert("网络通信失败" + e);
         }
     });
-    wishSize=11;
 }
 
 function submitWish(desc,name) {
