@@ -177,11 +177,10 @@
             },
             function(data,status){
                 console.log(data);
-                console.log(obj);
                 console.log(status);
-                var obj= JSON.parse(data);
+
            //     if(obj.code==200) {
-                    var dataStrObj = JSON.parse(obj.data);
+                    var dataStrObj = data.data;
                     console.log(dataStrObj);
                     createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
            //     }else{
