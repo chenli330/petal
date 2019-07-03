@@ -2,6 +2,7 @@ var container;
 
 // 可选颜色
 var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
+var wishSize;
 
 //创建许愿页
 var createItem = function (text, name, time) {
@@ -16,6 +17,7 @@ var createItem = function (text, name, time) {
 var init = function () {
     container = $('#container');
     getWish(1,1);
+    wishSize=11;
 }
 
 function submitWish(desc,name) {
@@ -92,7 +94,7 @@ $(document).ready(function () {
     $("#frontWish").click(function () {
         var i = $("#frontWish").attr('name');
         if (i <= 1) {
-            i = pageSize;
+            i = wishSize+1;
         }
         i--;
         $("#frontWish").attr('name', i);
@@ -100,7 +102,7 @@ $(document).ready(function () {
     });
     $("#nextWish").click(function () {
         var i = $("#nextWish").attr('name');
-        if (i >= pageSize) {
+        if (i >= wishSize) {
             i = 0;
         }
         i++;
