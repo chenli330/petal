@@ -176,10 +176,10 @@
                 pageNum:"1"
             },
             function(data,status){
-                var obj= JSON.parse(data);
                 console.log(data);
                 console.log(obj);
                 console.log(status);
+                var obj= JSON.parse(data);
            //     if(obj.code==200) {
                     var dataStrObj = JSON.parse(obj.data);
                     console.log(dataStrObj);
