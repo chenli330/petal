@@ -92,11 +92,11 @@ $(document).ready(function () {
     $("#frontWish").click(function () {
         var i = $("#frontWish").attr('name');
         if (i <= 1) {
-            i = pageSize + 1;
+            i = pageSize;
         }
         i--;
         $("#frontWish").attr('name', i);
-        getWish(i,1)
+        getWish(1,i)
     });
     $("#nextWish").click(function () {
         var i = $("#nextWish").attr('name');
@@ -105,7 +105,7 @@ $(document).ready(function () {
         }
         i++;
         $("#frontWish").attr('name', i);
-        getWish(i,1)
+        getWish(1,i)
 
     });
 
