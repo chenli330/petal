@@ -38,24 +38,28 @@ $(document).ready(function () {
     });
 
     function submitWish(desc,name) {
-        $.post("http://www.charleymot.com/server/petal/wish",
-            {
-                desc:desc,
-                name:name
+        $.ajax({
+            type: 'POST',
+            url: "http://www.charleymot.com/server/petal/wish",
+            data: {
+                desc: value,
+                name: '郑梦婷'
             },
-            function(data,status){
-                if (status == 'success') {
-                    if (data.code == 200) {
-                        var dataStrObj = JSON.parse(data.data);
-                        createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
-                        $("#input").val('');
-                    } else {
-                        alert(data.message);
-                    }
+            cache: false,
+            async: true,
+            success: function (data) {
+                if (data.code == 200) {
+                    var dataStrObj = JSON.parse(data.data);
+                    createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
+                    $("#input").val('');
                 } else {
-                    alert("网络通信失败")
+                    alert(data.message);
                 }
-            });
+            },
+            error: function (e) {
+                alert("网络通信失败" + e);
+            }
+        });
     }
 
 
