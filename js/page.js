@@ -90,10 +90,23 @@ $(document).ready(function () {
     });
 
     $("#frontWish").click(function () {
-        alert("待完善");
+        var i = $("#frontWish").attr('name');
+        if (i <= 1) {
+            i = pageSize + 1;
+        }
+        i--;
+        getWish(i,1)
     });
     $("#nextWish").click(function () {
-        alert("待完善");
+        var i = $("#nextWish").attr('name');
+        if (i >= pageSize) {
+            i = 0;
+        }
+        i++;
+        $("#jishi").attr('src', "./powerview/幻灯片" + i + ".jpg");
+        $("#nextOpt").attr('name', i);
+        getWish(i,1)
+
     });
 
 
