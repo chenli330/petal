@@ -47,12 +47,9 @@ $(document).ready(function () {
                 console.log(status);
                 var obj= JSON.parse(data);
                 if(obj.code==200) {
-                    console.log(status);
-                    var obj= JSON.parse(data);
-                    if(obj.code==200) {
-                        var dataStrObj=JSON.parse(obj.data);
-                        createItem(dataStrObj[0].description,dataStrObj[0].name,dataStrObj[0].createdate);
-                        $("#input").val('');
+                    var dataStrObj=JSON.parse(obj.data);
+                    createItem(dataStrObj[0].description,dataStrObj[0].name,dataStrObj[0].createdate);
+                    $("#input").val('');
                 }else{
                     alert(obj.message);
                 }
