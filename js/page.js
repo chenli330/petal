@@ -19,7 +19,7 @@ var init = function () {
     getWish(1,1);
     $.ajax({
         type: 'POST',
-        url: "http://www.charleymot.com/server/petal/wishSize",
+        url: "http://www.charleymot.com/server/petal/getWishSize",
         cache: false,
         data:{
 
