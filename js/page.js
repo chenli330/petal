@@ -44,14 +44,16 @@ $(document).ready(function () {
                 name:name
             },
             function(data,status){
-                console.log(status);
-                var obj= JSON.parse(data);
-                if(obj.code==200) {
-                    var dataStrObj=JSON.parse(obj.data);
-                    createItem(dataStrObj[0].description,dataStrObj[0].name,dataStrObj[0].createdate);
-                    $("#input").val('');
-                }else{
-                    alert(obj.message);
+                if (status == 'success') {
+                    if (data.code == 200) {
+                        var dataStrObj = JSON.parse(data.data);
+                        createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
+                        $("#input").val('');
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert("网络通信失败")
                 }
             });
     }
