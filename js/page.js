@@ -10,32 +10,35 @@ var createItem = function (text, name, time) {
     container.html("");
     $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;' + name + '</p><p class="wishtime">' + time + '</p></div>').css({'background': color}).appendTo(container);
 };
+
 //判断字符是否为空的方法
-function isEmpty(obj){
-    if(typeof obj == "undefined" || obj == null || obj == ""){
+function isEmpty(obj) {
+    if (typeof obj == "undefined" || obj == null || obj == "") {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 
-
 // 初始化
 var init = function () {
     container = $('#container');
-    getWish(1,1);
+    getWish(1, 1);
+    getSize();
+}
+
+
+function getSize() {
     $.ajax({
         type: 'POST',
         url: "http://www.charleymot.com/server/petal/getWishSize",
         cache: false,
-        data:{
-
-        },
+        data: {},
         async: true,
         success: function (data) {
             if (data.code == 200) {
-                wishSize=data.data;
+                wishSize = data.data;
             } else {
                 alert(data.message);
             }
@@ -47,7 +50,7 @@ var init = function () {
     });
 }
 
-function submitWish(desc,name) {
+function submitWish(desc, name) {
 
     $.ajax({
         type: 'POST',
@@ -73,7 +76,7 @@ function submitWish(desc,name) {
     });
 }
 
-function getWish(pageSize,pageNum){
+function getWish(pageSize, pageNum) {
     $.ajax({
         type: 'POST',
         url: "http://www.charleymot.com/server/petal/getWish",
@@ -120,16 +123,18 @@ $(document).ready(function () {
     });
 
     $("#frontWish").click(function () {
+        getSize();
         var i = $("#frontWish").attr('name');
         if (i <= 1) {
-            i = wishSize+1;
+            i = wishSize + 1;
         }
         i--;
         $("#frontWish").attr('name', i);
         $("#nextWish").attr('name', i);
-        getWish(1,i)
+        getWish(1, i)
     });
     $("#nextWish").click(function () {
+        getSize();
         var i = $("#nextWish").attr('name');
         if (i >= wishSize) {
             i = 0;
@@ -137,27 +142,23 @@ $(document).ready(function () {
         i++;
         $("#frontWish").attr('name', i);
         $("#nextWish").attr('name', i);
-        getWish(1,i)
+        getWish(1, i)
 
     });
 
 
     $("#addWishClick").click(function () {
+        getSize();
         var value = $("#input").val();
         var name = $("#wishname").val();
         if (isEmpty(value)) {
             alert("请输入心愿")
-        }else if(isEmpty(name)){
+        } else if (isEmpty(name)) {
             alert("请输入姓名")
-        }else {
+        } else {
             submitWish(value, name);
         }
     });
-
-
-
-
-
 
 
 });
