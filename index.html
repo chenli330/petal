@@ -159,10 +159,10 @@
     var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
 
     //创建许愿页
-    var createItem = function (text,name,time) {
+    var createItem = function (text, name, time) {
         var color = colors[parseInt(Math.random() * 5, 10)]
         container.html("");
-        $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;'+name+'</p><p class="wishtime">'+time+'</p></div>').css({'background': color}).appendTo(container);
+        $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;' + name + '</p><p class="wishtime">' + time + '</p></div>').css({'background': color}).appendTo(container);
     };
 
     // 初始化
@@ -172,20 +172,24 @@
 
         $.post("http://www.charleymot.com/server/petal/getWish",
             {
-                pageSize:"1",
-                pageNum:"1"
+                pageSize: "1",
+                pageNum: "1"
             },
-            function(data,status){
-                console.log(data);
-                console.log(status);
-
-           //     if(obj.code==200) {
-                    var dataStrObj = data.data;
-                    console.log(dataStrObj);
-                    createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
-           //     }else{
-            //        alert(obj.message);
-           //     }
+            function (data, status) {
+                if (status == 'success') {
+                    if (data.code == 200) {
+                        var dataStrObj = JSON.parse(data.data);
+                        console.log(dataStrObj);
+                        console.log(dataStrObj[0].description);
+                        console.log(dataStrObj[0].name);
+                        console.log(dataStrObj[0].createdate);
+                        createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
+                    } else {
+                        alert(obj.message);
+                    }
+                } else {
+                    alert("网络通信失败")
+                }
             });
 
         // 绑定输入框
@@ -196,24 +200,23 @@
                 if (value) {
                     $.post("http://www.charleymot.com/server/petal/wish",
                         {
-                            desc:value,
-                            name:name
+                            desc: value,
+                            name: name
                         },
-                        function(data,status){
+                        function (data, status) {
                             console.log(status);
-                            var obj= JSON.parse(data);
-                            if(obj.code==200) {
-                                var dataStrObj=JSON.parse(obj.data);
-                                createItem(dataStrObj[0].description,dataStrObj[0].name,dataStrObj[0].createdate);
+                            var obj = JSON.parse(data);
+                            if (obj.code == 200) {
+                                var dataStrObj = JSON.parse(obj.data);
+                                createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
                                 $("#input").val('');
-                            }else{
+                            } else {
                                 alert(obj.message);
                             }
                         });
                 }
             }
         });
-
 
 
     };
@@ -273,7 +276,8 @@
                         <div class="pad">
                             <h2>记事</h2>
                             <div class="relative">
-                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页" name="1"></span>
+                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页"
+                                                            name="1"></span>
                                 <span class="nextOpt"><img src="images/next.png" id="nextOpt" alt="下一页" name="1"></span>
                                 <div class="scroll">
                                     <img id="jishi" src="./powerview/幻灯片1.jpg" width="100%">
