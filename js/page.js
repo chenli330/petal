@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
     var pageSize = 11;
     $("#nextOpt").click(function () {
         var i = $("#nextOpt").attr('name');
@@ -34,34 +36,29 @@ $(document).ready(function () {
             submitWish(value,'郑梦婷');
         }
     });
-    // 绑定输入框
-    $('#input').keydown(function (e) {
-        var $this = $(this);
-        if (e.keyCode == '13') {
-            var value = $this.val();
-            if (value) {
-                submitWish(value,'郑梦婷');
-            }
-        }
-    });
 
     function submitWish(desc,name) {
         $.post("http://www.charleymot.com/server/petal/wish",
             {
-                desc:dsec,
+                desc:desc,
                 name:name
             },
             function(data,status){
                 console.log(status);
                 var obj= JSON.parse(data);
                 if(obj.code==200) {
-                    createItem(1,1);
-                    $("#input").val('');
+                    console.log(status);
+                    var obj= JSON.parse(data);
+                    if(obj.code==200) {
+                        var dataStrObj=JSON.parse(obj.data);
+                        createItem(dataStrObj[0].description,dataStrObj[0].name,dataStrObj[0].createdate);
+                        $("#input").val('');
                 }else{
                     alert(obj.message);
                 }
             });
     }
+
 
 
 });
