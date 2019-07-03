@@ -161,7 +161,8 @@
     //创建许愿页
     var createItem = function (text) {
         var color = colors[parseInt(Math.random() * 5, 10)]
-        $('<div class="item"><p>' + text + '</p></div>').css({'background': color}).appendTo(container);
+        container.html("");
+        $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By</p><p class="wishtime">2019-04-22</p></div>').css({'background': color}).appendTo(container);
     };
 
     // 初始化
@@ -169,6 +170,14 @@
 
         container = $('#container');
 
+        $.post("http://140.143.9.250:9999/server/petal/getWish",
+            {
+                pageSize:"1",
+                pageNum:"1"
+            },
+            function(data,status){
+                alert("数据: \n" + data + "\n状态: " + status);
+            });
 
         var tests = ['道友，还处在凝气期吗？'];
         $.each(tests, function (i, v) {
@@ -246,8 +255,7 @@
                         <div class="pad">
                             <h2>记事</h2>
                             <div class="relative">
-                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页"
-                                                            name="1"></span>
+                                <span class="frontOpt"><img src="images/front.png" id="frontOpt" alt="上一页" name="1"></span>
                                 <span class="nextOpt"><img src="images/next.png" id="nextOpt" alt="下一页" name="1"></span>
                                 <div class="scroll">
                                     <img id="jishi" src="./powerview/幻灯片1.jpg" width="100%">
@@ -261,6 +269,8 @@
                         <span class="back"><img src="images/nav3.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
                         <div class="pad">
                             <h2>心愿</h2>
+                            <span class="frontOpt"><img src="images/front.png" id="frontWish" alt="上一页" name="1"></span>
+                            <span class="nextOpt"><img src="images/next.png" id="nextWish" alt="下一页" name="1"></span>
                             <span class="addWish"><img src="images/add.png" id="addWishClick" alt="添加心愿"></span>
 
                             <div class="relative">
