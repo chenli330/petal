@@ -95,6 +95,7 @@ $(document).ready(function () {
             i = pageSize + 1;
         }
         i--;
+        $("#frontWish").attr('name', i);
         getWish(i,1)
     });
     $("#nextWish").click(function () {
@@ -103,8 +104,7 @@ $(document).ready(function () {
             i = 0;
         }
         i++;
-        $("#jishi").attr('src', "./powerview/幻灯片" + i + ".jpg");
-        $("#nextOpt").attr('name', i);
+        $("#frontWish").attr('name', i);
         getWish(i,1)
 
     });
