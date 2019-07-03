@@ -157,9 +157,10 @@
     $('#input').keydown(function (e) {
         var $this = $(this);
         if (e.keyCode == '13') {
-            var value = $this.val();
-            if (value) {
-                submitWish(value, '郑梦婷');
+            var value = $("#input").val();
+            var name = $("#wishname").val();
+            if (value&&name) {
+                submitWish(value,name);
             }
         }
     });
@@ -233,7 +234,7 @@
                         <img src="images/bg_content.png" alt="" class="bg_cont">
                         <span class="back"><img src="images/nav3.png" alt="" usemap="#back"><a href="index.html#close">返回</a></span>
                         <div class="pad">
-                            <h2>心愿</h2>
+                            <span> <h2>许愿人: </h2><input  id="wishname " type="text" placeholder="输入姓名才会愿望成真哦"/><span>
                             <span class="frontOpt"><img src="images/front.png" id="frontWish" alt="上一页" name="1"></span>
                             <span class="nextOpt"><img src="images/next.png" id="nextWish" alt="下一页" name="1"></span>
                             <span class="addWish"><img src="images/add.png" id="addWishClick" alt="添加心愿"></span>

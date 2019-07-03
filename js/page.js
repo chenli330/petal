@@ -40,6 +40,7 @@ var init = function () {
 }
 
 function submitWish(desc,name) {
+
     $.ajax({
         type: 'POST',
         url: "http://www.charleymot.com/server/petal/wish",
@@ -135,8 +136,9 @@ $(document).ready(function () {
 
     $("#addWishClick").click(function () {
         var value = $("#input").val();
-        if (value) {
-            submitWish(value,'郑梦婷');
+        var name = $("#wishname").val();
+        if (value&&name) {
+            submitWish(value,name);
         }
     });
 
