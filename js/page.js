@@ -10,6 +10,14 @@ var createItem = function (text, name, time) {
     container.html("");
     $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;' + name + '</p><p class="wishtime">' + time + '</p></div>').css({'background': color}).appendTo(container);
 };
+//判断字符是否为空的方法
+function isEmpty(obj){
+    if(typeof obj == "undefined" || obj == null || obj == ""){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 
 
@@ -137,7 +145,7 @@ $(document).ready(function () {
     $("#addWishClick").click(function () {
         var value = $("#input").val();
         var name = $("#wishname").val();
-        if (value&&name) {
+        if (!isEmpty(value)&&!isEmpty(name)) {
             submitWish(value,name);
         }
     });
