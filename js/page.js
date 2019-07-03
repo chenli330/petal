@@ -17,6 +17,22 @@ var createItem = function (text, name, time) {
 var init = function () {
     container = $('#container');
     getWish(1,1);
+    $.ajax({
+        type: 'POST',
+        url: "http://www.charleymot.com/server/petal/wishSize",
+        cache: false,
+        async: true,
+        success: function (data) {
+            if (data.code == 200) {
+                wishSize=data.data;
+            } else {
+                alert(data.message);
+            }
+        },
+        error: function (e) {
+            alert("网络通信失败" + e);
+        }
+    });
     wishSize=11;
 }
 
@@ -106,7 +122,7 @@ $(document).ready(function () {
             i = 0;
         }
         i++;
-        $("#frontWish").attr('name', i);
+        $("#nextWish").attr('name', i);
         getWish(1,i)
 
     });
