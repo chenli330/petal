@@ -153,21 +153,6 @@
         init();
     }
 
-    // 绑定输入框
-    $('#input').keydown(function (e) {
-        var $this = $(this);
-        if (e.keyCode == '13') {
-            var value = $("#input").val();
-            var name = $("#wishname").val();
-            if (isEmpty(value)) {
-                alert("请输入心愿")
-            }else if(isEmpty(name)){
-                alert("请输入姓名")
-            }else {
-                submitWish(value, name);
-            }
-        }
-    });
 </script>
 <body onLoad="checkhtml5()">
 <div id="abox">
@@ -246,7 +231,7 @@
                             <div class="relative">
                                 <div class="scroll">
                                     <div id="container"></div>
-                                    <input id="input" type="text" placeholder="点击输入...回车或上方的加号发布"/>
+                                    <input id="input" type="text" placeholder="点击输入心愿按上方的加号发布"/>
                                 </div>
                             </div>
                         </div>
