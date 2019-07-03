@@ -32,7 +32,7 @@ var init = function () {
 function getSize() {
     $.ajax({
         type: 'POST',
-        url: "http://www.charleymot.com/server/petal/getWishSize",
+        url: "https://www.charleymot.com/server/petal/getWishSize",
         cache: false,
         data: {},
         async: true,
@@ -54,7 +54,7 @@ function submitWish(desc, name) {
 
     $.ajax({
         type: 'POST',
-        url: "http://www.charleymot.com/server/petal/wish",
+        url: "https://www.charleymot.com/server/petal/wish",
         data: {
             desc: desc,
             name: name
@@ -79,7 +79,7 @@ function submitWish(desc, name) {
 function getWish(pageSize, pageNum) {
     $.ajax({
         type: 'POST',
-        url: "http://www.charleymot.com/server/petal/getWish",
+        url: "https://www.charleymot.com/server/petal/getWish",
         data: {
             pageSize: pageSize,
             pageNum: pageNum
