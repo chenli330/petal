@@ -177,13 +177,16 @@
             },
             function(data,status){
                 var obj= JSON.parse(data);
-                if(obj.code==200) {
+                console.log(data);
+                console.log(obj);
+                console.log(status);
+           //     if(obj.code==200) {
                     var dataStrObj = JSON.parse(obj.data);
                     console.log(dataStrObj);
                     createItem(dataStrObj[0].description, dataStrObj[0].name, dataStrObj[0].createdate);
-                }else{
-                    alert(obj.message);
-                }
+           //     }else{
+            //        alert(obj.message);
+           //     }
             });
 
         // 绑定输入框
