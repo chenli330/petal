@@ -31,10 +31,37 @@ $(document).ready(function () {
     $("#addWishClick").click(function () {
         var value = $("#input").val();
         if (value) {
-            createItem(value);
-            $("#input").val('');
+            submitWish(value,'郑梦婷');
         }
     });
+    // 绑定输入框
+    $('#input').keydown(function (e) {
+        var $this = $(this);
+        if (e.keyCode == '13') {
+            var value = $this.val();
+            if (value) {
+                submitWish(value,'郑梦婷');
+            }
+        }
+    });
+
+    function submitWish(desc,name) {
+        $.post("http://www.charleymot.com/server/petal/wish",
+            {
+                desc:dsec,
+                name:name
+            },
+            function(data,status){
+                console.log(status);
+                var obj= JSON.parse(data);
+                if(obj.code==200) {
+                    createItem(1,1);
+                    $("#input").val('');
+                }else{
+                    alert(obj.message);
+                }
+            });
+    }
 
 
 });

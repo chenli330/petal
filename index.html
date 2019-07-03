@@ -159,45 +159,32 @@
     var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
 
     //创建许愿页
-    var createItem = function (text) {
-        var color = colors[parseInt(Math.random() * 5, 10)]
-        container.html("");
-        $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By</p><p class="wishtime">2019-04-22</p></div>').css({'background': color}).appendTo(container);
+    var createItem = function (pageSize,pageNum) {
+        $.post("http://www.charleymot.com/server/petal/getWish",
+            {
+                pageSize:pageSize,
+                pageNum:pageNum
+            },
+            function(data,status){
+                console.log(status);
+                var obj= JSON.parse(data);
+                if(obj.code==200) {
+                    var dataStrObj = JSON.parse(obj.data);
+                    var color = colors[parseInt(Math.random() * 5, 10)]
+                    container.html("");
+                    $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + dataStrObj[0].description + '</p><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;'+description, dataStrObj[0].name+'</p><p class="wishtime">'+ dataStrObj[0].createdate+'</p></div>').css({'background': color}).appendTo(container);
+                }else{
+                    alert(obj.message);
+                }
+            });
+
     };
 
     // 初始化
     var init = function () {
 
         container = $('#container');
-
-        $.post("http://www.charleymot.com/server/petal/getWish",
-            {
-                pageSize:"1",
-                pageNum:"1"
-            },
-            function(data,status){
-                alert("数据: \n" + data + "\n状态: " + status);
-            });
-
-        var tests = ['道友，还处在凝气期吗？'];
-        $.each(tests, function (i, v) {
-            createItem(v);
-        });
-
-        // 绑定输入框
-        $('#input').keydown(function (e) {
-            var $this = $(this);
-            if (e.keyCode == '13') {
-                var value = $this.val();
-                if (value) {
-                    createItem(value);
-                    $this.val('');
-                }
-            }
-        });
-
-
-
+        createItem(1,1);
     };
 </script>
 <body onLoad="checkhtml5()">
