@@ -117,6 +117,7 @@ $(document).ready(function () {
         }
         i--;
         $("#frontWish").attr('name', i);
+        $("#nextWish").attr('name', i);
         getWish(1,i)
     });
     $("#nextWish").click(function () {
@@ -125,6 +126,7 @@ $(document).ready(function () {
             i = 0;
         }
         i++;
+        $("#frontWish").attr('name', i);
         $("#nextWish").attr('name', i);
         getWish(1,i)
 
