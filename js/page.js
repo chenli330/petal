@@ -145,9 +145,13 @@ $(document).ready(function () {
     $("#addWishClick").click(function () {
         var value = $("#input").val();
         var name = $("#wishname").val();
-        if (!isEmpty(value)&&!isEmpty(name)) {
-            submitWish(value,name);
+        if (!isEmpty(value)) {
+            alert("请输入心愿")
         }
+        if(!isEmpty(name)){
+            alert("请输入姓名")
+        }
+        submitWish(value,name);
     });
 
 
