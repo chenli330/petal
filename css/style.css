@@ -433,15 +433,15 @@ header {
 }
 .wishname{
     position: relative;
-    left: 56%;
+    /*left: 56%;*/
     top: 0;
     text-indent:2em;
 }
 
 .wishtime{
     position: relative;
-    left: 56%;
-    top: -51%;
+    /*left: 56%;*/
+    /*top: -51%;*/
     text-indent:2em;
 }
 
@@ -463,9 +463,9 @@ header {
 }
 
 #container textarea{
-    height: 80px;
+    width: 96%;
+    height: 80%;
     margin: 30px 10px;
-    overflow: hidden;
     word-wrap: break-word;
     line-height: 1.5;
     border:0;
