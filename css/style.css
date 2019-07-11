@@ -455,6 +455,15 @@ header {
 }
 
 #container p{
+    height: 80px;
+    margin: 30px 10px;
+    overflow: hidden;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+#container textarea{
+    height: 80px;
     margin: 30px 10px;
     overflow: hidden;
     word-wrap: break-word;

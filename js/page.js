@@ -8,7 +8,7 @@ var wishSize;
 var createItem = function (text, name, time) {
     var color = colors[parseInt(Math.random() * 5, 10)]
     container.html("");
-    $('<div class="item"><p><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</p><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;' + name + '</p><p class="wishtime">' + time + '</p></div>').css({'background': color}).appendTo(container);
+    $('<div class="item"><textarea style="overflow-x: hidden"><br/>&nbsp;&nbsp;&nbsp;&nbsp;' + text + '</textarea><p class="wishname">By&nbsp;&nbsp;&nbsp;&nbsp;' + name + '</p><p class="wishtime">' + time + '</p></div>').css({'background': color}).appendTo(container);
 };
 
 //判断字符是否为空的方法
