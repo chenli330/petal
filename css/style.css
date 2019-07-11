@@ -434,14 +434,14 @@ header {
 .wishname{
     position: relative;
     left: 56%;
-    top: 0;
+    top: -65%;
     text-indent:2em;
 }
 
 .wishtime{
     position: relative;
     left: 56%;
-    top: -51%;
+    top: -88%;
     text-indent:2em;
 }
 
@@ -464,7 +464,7 @@ header {
 
 #container textarea{
     width: 96%;
-    height: 80%;
+    height: 49%;
     margin: 30px 10px;
     word-wrap: break-word;
     line-height: 1.5;
