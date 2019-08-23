@@ -3,7 +3,7 @@ var container;
 // 可选颜色
 var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
 var wishSize;
-
+var pageSize = 3;
 //创建许愿页
 var createItem = function (text, name, time) {
     var color = colors[parseInt(Math.random() * 5, 10)]
@@ -101,14 +101,14 @@ function getWish(pageSize, pageNum) {
 
 
 $(document).ready(function () {
-    var pageSize = 11;
+
     $("#nextOpt").click(function () {
         var i = $("#nextOpt").attr('name');
         if (i >= pageSize) {
             i = 0;
         }
         i++;
-        $("#jishi").attr('src', "./powerview/幻灯片" + i + ".jpg");
+        $("#jishi").attr('src', "./powerview/幻灯片" + i + ".png");
         $("#nextOpt").attr('name', i);
     });
 
@@ -118,7 +118,7 @@ $(document).ready(function () {
             i = pageSize + 1;
         }
         i--;
-        $("#jishi").attr('src', "./powerview/幻灯片" + i + ".jpg");
+        $("#jishi").attr('src', "./powerview/幻灯片" + i + ".png");
         $("#nextOpt").attr('name', i);
     });
 
