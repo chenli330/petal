@@ -3,7 +3,7 @@ var container;
 // 可选颜色
 var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
 var wishSize;
-var pageSize = 3;
+var pageSize = 4;
 //创建许愿页
 var createItem = function (text, name, time) {
     var color = colors[parseInt(Math.random() * 5, 10)]
